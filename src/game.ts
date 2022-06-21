@@ -1,9 +1,12 @@
 import * as PIXI from 'pixi.js'
+import { sound } from '@pixi/sound';
+
 import bgImage from "./images/background field.png"
 import beeImage from "./images/bee.png"
 import plantImage from "./images/basis.png"
 import violetImage from "./images/viooltjes.png"
 import sunflowerImage from "./images/zonnebloem.png"
+import music from "url:./sound/music.mp3"
 
 import { Background } from './Background'
 import { Plant } from './Plant'
@@ -30,6 +33,7 @@ export class Game {
             .add('plantTexture', plantImage)
             .add('violetTexture', violetImage)
             .add('sunflowerTexture', sunflowerImage)
+            .add('music', music)
 
         this.loader.load(() => this.doneLoading())
     }
@@ -53,6 +57,9 @@ export class Game {
         console.log("Loading completed")
         //start ticker
         this.pixi.ticker.add((delta: number) => this.update(delta))
+        let titleTheme = this.loader.resources["music"].data!
+        console.log(titleTheme)
+        titleTheme.play()
     }
 
     update(delta: number) {

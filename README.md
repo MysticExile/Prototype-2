@@ -2,4 +2,4 @@
 
 Prototype 2 voor Gaming block
 
-This is a prototype containing collision, keyboard controls and spawning enemies
+This is a prototype containing music, please click on the page as soon as it starts loading otherwise it won't play sound.
