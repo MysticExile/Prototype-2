@@ -8,12 +8,14 @@ export class Plant extends PIXI.Sprite {
     private secondaryTexture: PIXI.Texture
     private tertiaryTexture: PIXI.Texture
     private primaryTexture: PIXI.Texture
+    private music: HTMLAudioElement
 
-    constructor(texture: PIXI.Texture, secondaryTexture: PIXI.Texture, tertiaryTexture: PIXI.Texture, game: Game) {
+    constructor(texture: PIXI.Texture, secondaryTexture: PIXI.Texture, tertiaryTexture: PIXI.Texture, game: Game, collectSound: HTMLAudioElement) {
         super(texture);
         this.primaryTexture = texture;
         this.secondaryTexture = secondaryTexture;
         this.tertiaryTexture = tertiaryTexture;
+        this.music = collectSound
         this.game = game;
         this.y = this.game.getRandomInt(0, 450);
         this.x = this.game.getRandomInt(0, 800);
@@ -30,6 +32,7 @@ export class Plant extends PIXI.Sprite {
     }
 
     hit(modulo: number) {
+        this.music.play();
         if (modulo % 2 == 0) {
             this.texture = this.secondaryTexture;
             this.plantName = "Violet";
